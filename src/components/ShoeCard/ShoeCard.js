@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import { formatPrice, pluralize, isNewShoe } from '../../utils';
-import Spacer from '../Spacer';
+import { COLORS, WEIGHTS } from "../../constants";
+import { formatPrice, isNewShoe, pluralize } from "../../utils";
+import Spacer from "../Spacer";
 
 const ShoeCard = ({
   slug,
@@ -34,6 +34,7 @@ const ShoeCard = ({
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
+        <Flag>{variant}</Flag>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
@@ -43,7 +44,7 @@ const ShoeCard = ({
           <Price>{formatPrice(price)}</Price>
         </Row>
         <Row>
-          <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
         </Row>
       </Wrapper>
     </Link>
@@ -55,15 +56,36 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+  max-width: 340px;
+  max-height: 312px;
+`;
+
+const Flag = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9px;
+  background-color: yellow;
+  z-index: 2;
+  border-radius: 2px;
+  margin-right: -8px;
+  margin-top: 12px;
+`;
 
 const ImageWrapper = styled.div`
   position: relative;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  max-width: 340px;
+  max-height: 312px;
+  border-radius: 16px 16px 4px 4px;
+`;
 
 const Row = styled.div`
+  position: relative;
   font-size: 1rem;
 `;
 
@@ -72,7 +94,11 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
