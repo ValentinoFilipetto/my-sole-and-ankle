@@ -10,7 +10,7 @@
  * any best-practices from stuff like this data file!
  */
 
-constSHOES = [
+const SHOES = [
   {
     slug: "tech-challenge",
     name: "NikeCourt Tech Challenge 20",

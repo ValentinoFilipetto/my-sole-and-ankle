@@ -79,9 +79,8 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-  max-width: 340px;
-  max-height: 312px;
   border-radius: 16px 16px 4px 4px;
+  width: 100%;
 `;
 
 const Row = styled.div`
